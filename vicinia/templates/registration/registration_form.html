@@ -14,7 +14,9 @@
       {% endif %}
       <div class="panel panel-default">
 
-        <div class="panel-heading">
+        <div class="panel-heading" style="padding-top: 3em;">
+          <h3 class="text-center"><span style="font-family: 'Princess Sofia', cursive; color: green;">M<span style="font-family: 'Ephesis', cursive;">a </span><span style="font-family: 'Ephesis', cursive; color: brown;">Vicinia:</span></span></h3>
+          <hr style="color: brown;">
           <h3 class="text-center">Sign Up</h3>
         </div>
         <div class="panel-body">
@@ -23,7 +25,7 @@
             {% csrf_token %}
             {{form|crispy}}
             <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+              <input type="submit" style="background-color: brown;" class="btn btn-primary btn-sm" value="Sign Up">
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
