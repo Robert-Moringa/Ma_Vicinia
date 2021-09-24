@@ -6,5 +6,47 @@
 
 <h2 class="text-center">Ma(French) means my and Vicinia(Latin) means neighbourhood.</h2>
 <p class="text-center"><span style="font-family: 'Princess Sofia', cursive; color: green;">M<span style="font-family: 'Ephesis', cursive;">a </span><span style="font-family: 'Ephesis', cursive; color: brown;">Vicinia</span></span> applications allows users to be in the loop about everything happening in their neighborhood; from contact information of different handyman to meeting announcements or even alerts.</p>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        {%for nbd in neighbourhoods%}
+        <div class="card" style="margin-left: 20px; margin-right: 20px;">
+         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <h3 style="color:rgb(106, 4, 15); padding-top: 10px; padding-left: 10px;" class="card-title">{{nbd.name}}</h3>
+            <hr style="color: brown;">
+            <p style="padding-top: 5px; padding-left: 13px;"><em><strong>{{nbd.county}}  </strong></em> County</p>
+           <img
+             src="{{nbd.area_pic_one.url}}"
+             class="img-fluid"
+           />
+           <a href="#!">
+             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+           </a>
+         </div>
+         <div class="card-body">
+           
+           <p class="card-text">
+             {{nbd.description}}
+           </p>
 
+           <img
+             src="{{nbd.area_pic_two.url}}"
+             class="img-fluid"
+           />
+           
+           <p>{{nbd.name}} has about <em><strong>{{nbd.population}}</strong></em>        persons.</p>
+           <hr>
+           <p>Added by <em><strong>{{nbd.admin.username}}</strong></em></p>
+         </div>
+       </div>
+       
+       {% empty %}
+           <div class="row">
+               <h2 class="text-center">There no neighbourhoods added yet</h2>
+           </div>
+       {%endfor%}
+          
+    </div>
+    <div class="col-md-2"></div>
+</div>
  {% endblock %}
