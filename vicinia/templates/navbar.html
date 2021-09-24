@@ -36,6 +36,42 @@
         <!-- Left links -->
       </div>
       <!-- Collapsible wrapper -->
+
+      <div class="float-end">
+        {% if user.is_authenticated %}
+        <ul>
+          <li class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" type="button" style="background-color:rgb(40, 54, 24); color: white; border-radius: 10px;" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Account
+                      <span class="caret"></span>
+                  </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <a href="{%url 'home'%}" class="dropdown-item">Home</a>
+              </li>
+              <li>
+                <a href="" class="dropdown-item">Add project</a>
+              </li>
+              <li>
+                <a href="" class="dropdown-item">My Profile</a>
+              </li>
+              <li>
+                <a href="/accounts/password/change" class="dropdown-item">Change Password</a>
+              </li>
+              <li>
+                <a href="accounts/logout" class="dropdown-item">Logout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        {% else %}
+        <li>
+          <a class='btn btn-default' href="/accounts/login">Login</a>
+        </li>
+  
+        <p></p>
+  
+        {% endif %}
+      </div>
   
       <!-- Right elements -->
       <div class="d-flex align-items-center">
