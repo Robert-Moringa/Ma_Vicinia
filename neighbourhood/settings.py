@@ -39,7 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vicinia.apps.ViciniaConfig',
+    'registration',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+SITE_ID=1
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL='home'
+LOGOUT_REDIRECT_URL='home'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

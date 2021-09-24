@@ -24,4 +24,6 @@ from django.contrib import admin
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'',include('vicinia.urls')),
+    url('accounts/', include('registration.backends.simple.urls')),
+    url('accounts/', include('django.contrib.auth.urls')),
 ]
