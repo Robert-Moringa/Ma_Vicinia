@@ -6,7 +6,7 @@
   <meta charset="utf-8">
 
   {% if title %}
-  <title>Magnifico Ranks: {{title}}</title>
+  <title>Ma_Vicinia: {{title}}</title>
   {% else %}
     <title> Welcome to Ma_Vicinia where we foster interactions within a neighborhood</title>
   {% endif %}
@@ -18,6 +18,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oregano&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Princess+Sofia&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   {% endblock %}
 
@@ -25,7 +27,9 @@
 </head>
 <body>
     
-    {% block content %} {%endblock%}
+    {% block content %} 
+    {%include 'navbar.html'%}
+    {%endblock%}
 
     {% block scripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
