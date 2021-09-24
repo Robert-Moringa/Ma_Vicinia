@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{% block content %}
+{{block.super}}
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-center">
+        {%for nbd in neighbourhoods%}
+        <div>
+            <a class='btn' href="{%url 'details' nbd.id%}"><h3><i class="fa fa-home" aria-hidden="true"></i>{{nbd.name}}</h3></a>
+        </div>
+        {%endfor%}
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+
+
+ {% endblock %}

@@ -25,8 +25,8 @@ class NeighbourHood(models.Model):
     def delete_neigborhood(self):
         self.delete()
 
-    def find_neigborhood(cls,business_id):
-        nbd= cls.objects.filter(user=business_id)
+    def find_neigborhood(cls,nbd_id):
+        nbd= cls.objects.filter(id=nbd_id)
         return nbd
 
     @classmethod

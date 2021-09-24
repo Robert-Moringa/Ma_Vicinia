@@ -5,4 +5,9 @@ from .models import NeighbourHood
 def home(request): 
     neighbourhoods=NeighbourHood.objects.all()
     title='Know your neighborhood'
-    return render(request, 'home.html', {'title':title, 'neighbourhoods': neighbourhoods})
+    return render(request, 'index.html', {'title':title, 'neighbourhoods': neighbourhoods})
+
+def details(request,id): 
+    neighbourhoods=NeighbourHood.find_neigborhood(NeighbourHood, id)
+    title='Know your neighborhood'
+    return render(request, 'detail.html', {'title':title, 'neighbourhoods': neighbourhoods})

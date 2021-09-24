@@ -3,12 +3,11 @@
 
 {% block content %}
 {{block.super}}
-
 <h2 class="text-center">Ma(French) means my and Vicinia(Latin) means neighbourhood.</h2>
 <p class="text-center"><span style="font-family: 'Princess Sofia', cursive; color: green;">M<span style="font-family: 'Ephesis', cursive;">a </span><span style="font-family: 'Ephesis', cursive; color: brown;">Vicinia</span></span> applications allows users to be in the loop about everything happening in their neighborhood; from contact information of different handyman to meeting announcements or even alerts.</p>
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
         {%for nbd in neighbourhoods%}
         <div class="card" style="margin-left: 20px; margin-right: 20px;">
          <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
@@ -47,6 +46,8 @@
        {%endfor%}
           
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-4">
+      
+    </div>
 </div>
- {% endblock %}
+{% endblock %}
