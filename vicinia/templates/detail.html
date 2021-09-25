@@ -127,7 +127,7 @@
       <!-- post -->
 
       <div class="post">
-        <h3>Posts in {{nbd.name}}</h3>
+        <h3 style="color: brown;"><i class="fa fa-bell-o" aria-hidden="true"></i> Posts in {{nbd.name}}</h3>
         {%for post in posts%}
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row g-0">
@@ -151,29 +151,44 @@
             </div>
           </div>
         </div>
+
+        {% empty %}
+          <div class="row">
+              <h5 class="text-center">There are no notifications added yet</h5>
+          </div>
         {%endfor%}
+        <hr style="color: brown;">
       </div>
 
-      {%for business in business%}
-      <div class="card" style="font-size: 80%; margin-top: 10px;">
-        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-          <img
-            src="{{business.business_pic_one.url}}"
-            class="img-fluid"
-          />
-          <a href="#!">
-            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-          </a>
+      <div class="business">
+        <h3 style="color: brown;"><i class="fa fa-money" aria-hidden="true"></i> Businesses in {{nbd.name}}</h3>
+        {%for business in business%}
+        <div class="card" style="font-size: 80%; margin-top: 10px;">
+          <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <img
+              src="{{business.business_pic_one.url}}"
+              class="img-fluid"
+            />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{business.name}}</h5>
+            <p class="card-text">
+              {{business.description}}
+            </p>
+            <a href="{%url 'business_details' business.id%}" class="btn btn-primary" style="background-color: brown; color: white; border: none; border-radius: 5px;">View more Details</a>
+          </div>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">{{business.name}}</h5>
-          <p class="card-text">
-            {{business.description}}
-          </p>
-          <a href="{%url 'business_details' business.id%}" class="btn btn-primary" style="background-color: brown; color: white; border: none; border-radius: 5px;">View more Details</a>
-        </div>
+        {% empty %}
+          <div class="row">
+              <h5 class="text-center">There are no businesses added yet</h5>
+          </div>
+          <hr style="color: brown;">
+        
+        {%endfor%}
       </div>
-      {%endfor%}
     </div>
 </div>
 {%endfor%}
