@@ -3,14 +3,16 @@
 
 {% block content %}
 {{block.super}}
-<div class="row">
+<div class="row" style="background-image: url('https://cutt.ly/rEbhWjL'); background-size: cover; background-repeat: no-repeat;">
     <div class="col-md-2"></div>
     <div class="col-md-8 text-center">
-        {%for nbd in neighbourhoods%}
-        <div>
-            <a class='btn' href="{%url 'details' nbd.id%}"><h3><i class="fa fa-home" aria-hidden="true"></i>{{nbd.name}}</h3></a>
+        
+        <div style="height: 45em;" >
+            {%for nbd in neighbourhoods%}
+            <a class='btn' style="margin-top: 20em;" href="{%url 'details' nbd.id%}"><button style="background-color: brown; color: white; border: none; border-radius: 5px;"><h3><i class="fa fa-home" aria-hidden="true"></i>{{nbd.name}}</h3></button></a>
+            {%endfor%}
         </div>
-        {%endfor%}
+        
     </div>
     <div class="col-md-2"></div>
 </div>

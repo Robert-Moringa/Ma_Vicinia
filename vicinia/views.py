@@ -8,7 +8,8 @@ def home(request):
     neighbourhoods=NeighbourHood.objects.all()
     title='Know your neighborhood'
     return render(request, 'index.html', {'title':title, 'neighbourhoods': neighbourhoods})
-
+    
+@login_required(login_url='login')
 def details(request,id): 
     neighbourhoods=NeighbourHood.objects.filter(id=id)
     health=Health.objects.filter(nbd=id)
