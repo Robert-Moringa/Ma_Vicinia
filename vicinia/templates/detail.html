@@ -36,6 +36,81 @@
            />
            
            <p>{{nbd.name}} has about <em><strong>{{nbd.population}}</strong></em>        persons.</p>
+
+           <hr style="color: brown;">
+
+           <div class="health" style="margin-top: 10px;">
+             <h4 style="color: brown;"><i class="fa fa-medkit" aria-hidden="true"></i> Health Facilities</h4>
+             <div class="row">
+              {%for health in health%}
+              <div class="card col-md-4" style="font-size: 80%; margin-top: 10px;">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                  <img
+                    src="{{health.pic.url}}"
+                    class="img-fluid"
+                  />
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{health.name}}</h5>
+                  <p class="card-text">
+                    {{health.description}}
+                  </p>
+
+                </div>
+                <hr style="color: brown;">
+                <div>
+                  <h4>Contacts</h4>
+                  <p>Email: {{health.email}}</p>
+                  <p>Phone number: 0{{health.contacts}}</p>
+                </div>
+                <hr style="color: brown;">
+                <p>Added on {{health.pub_date}} by {{health.user.username}}</p>
+              </div>
+              {%endfor%}
+             </div>
+            <a href="{%url 'health'%}" class="btn btn-primary" style="background-color: brown; margin-top: 7px; color: white; border: none; border-radius: 5px;">Add a health facility in {{nbd.name}}</a>
+            <hr style="color: brown;">
+          </div>
+
+          <div class="police" style="margin-top: 10px;">
+            <h4 style="color: brown;"><i class="fa fa-shield" aria-hidden="true"></i> Police Post</h4>
+            
+            <div class="row">
+              {%for police in police%}
+              <div class="card col-md-4" style="font-size: 80%; margin-top: 10px;">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                  <img
+                    src="{{police.pic.url}}"
+                    class="img-fluid"
+                  />
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{police.name}}</h5>
+                  <p class="card-text">
+                    {{police.description}}
+                  </p>
+
+                </div>
+                <hr style="color: brown;">
+                <div>
+                  <h4>Contacts</h4>
+                  <p>Email: {{police.email}}</p>
+                  <p>Phone number: 0{{police.contacts}}</p>
+                </div>
+                <hr style="color: brown;">
+                <p>Added on {{police.pub_date}} by {{police.user.username}}</p>
+              </div>
+              {%endfor%}
+             </div>
+
+            <a href="{%url 'police'%}" class="btn btn-primary" style="background-color: brown; color: white; border: none; border-radius: 5px;">Add a police post in {{nbd.name}}</a>
+          </div>
            <hr>
            <p>Added by <em><strong>{{nbd.admin.username}}</strong></em></p>
          </div>
