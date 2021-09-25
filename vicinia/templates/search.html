@@ -7,7 +7,30 @@
             {% if results%}
             <h3 style="color: white; background-color: rgb(221, 161, 94); padding: 10px; border: 1px solid  rgb(188, 108, 37); border-radius: 10px;"> <i class="fa fa-share-square-o" aria-hidden="true"></i> Found {{results|length }} of your search; {{message}}</h3>
 
-            {%for project in results%}
+            {%for business in results%}
+            <div class="card" style="font-size: 80%; margin-top: 10px;">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img
+                    src="{{business.business_pic_one.url}}"
+                    class="img-fluid"
+                    />
+                    <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{business.name}}</h5>
+                    <p class="card-text">
+                    {{business.description}}
+                    </p>
+                    <a href="{%url 'business_details' business.id%}" class="btn btn-primary" style="background-color: brown; color: white; border: none; border-radius: 5px;">View more Details</a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="row">
+                <h5 class="text-center">There are no businesses added yet</h5>
+            </div>
+            <hr style="color: brown;">
             
             {%endfor%}
 
