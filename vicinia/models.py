@@ -29,6 +29,10 @@ class NeighbourHood(models.Model):
         nbd= cls.objects.filter(id=nbd_id)
         return nbd
 
+    def find_neigborhd(cls,nbd_id):
+        nbd= cls.objects.filter(id=nbd_id)
+        return nbd.name
+
     @classmethod
     def update_occupants(self, update):
         self.population=update

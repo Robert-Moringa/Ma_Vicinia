@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{% block content %}
+{{block.super}}
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-center">
+        {%for business in business%}
+        <a class='btn' href="{%url 'details' business.nbd.id%}"><button><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> {{business.nbd.name}}<i class="fa fa-home" aria-hidden="true"></i></button></a>
+        <div class="card" style="margin-left: 20px; margin-right: 20px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+               <h3 style="color:rgb(106, 4, 15); padding-top: 10px; padding-left: 10px;" class="card-title">{{business.name}}</h3>
+               <hr style="color: brown;">
+               <p style="padding-top: 5px; padding-left: 13px;"><em><strong>{{business.nbd.name}}  </strong></em> Location</p>
+              <img
+                src="{{business.business_pic_one.url}}"
+                class="img-fluid"
+              />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              
+              <p class="card-text">
+                {{business.description}}
+              </p>
+   
+              <img
+                src="{{nbd.business_pic_two.url}}"
+                class="img-fluid"
+              />
+              <hr style="color: brown;">
+              <div>
+                <h4>Products</h4>
+                <p>{{business.products}}</p>
+              </div>
+              <hr style="color: brown;">
+              <div>
+                <h4>Contacts</h4>
+                <p>Email: {{business.email}}</p>
+                <p>Phone number: 0{{business.Phone_no}}</p>
+              </div>
+              <hr style="color: brown;">
+              <p>This business was added on {{business.pub_date}} by {{business.user.username}}</p>
+            </div>
+          </div>
+        {%endfor%}
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+
+
+ {% endblock %}
