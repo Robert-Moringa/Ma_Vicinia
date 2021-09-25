@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Business, NeighbourHood,Health,Police, Post
-from .forms import AddBusiness, AddPolice, AddHealth,AddPost
+from .models import Business, NeighbourHood,Health,Police, Post, Profile
+from .forms import AddBusiness, AddPolice, AddHealth,AddPost, AddProfile
 
 # Create your views here.
 def home(request): 
@@ -95,3 +95,21 @@ def addPost(request):
         form = AddPost()
 
     return render(request, 'addPost.html', {'title':title,'form':form})
+
+@login_required(login_url='login')
+def addProfile(request):
+    title='Make your own profile'
+    current_user = request.user
+    if request.method == 'POST':
+        form = AddProfile(request.POST, request.FILES)
+        print(form.is_valid())
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user =current_user
+            post.save()
+        return redirect('home')
+
+    else:
+        form = AddProfile()
+    profile=Profile.objects.filter(user=current_user)
+    return render(request, 'addProfile.html', {'title':title,'form':form, 'profile': profile})

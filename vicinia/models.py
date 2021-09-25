@@ -52,10 +52,11 @@ class Profile(models.Model):
 
     profile_pic = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
     email= models.EmailField()
-    why_here= models.TextField(max_length=200, null=True, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
-    user=models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     nbd= models.ForeignKey(NeighbourHood, null=True, blank=True, on_delete=models.CASCADE)
+    why_here= models.TextField(max_length=200, null=True, blank=True, verbose_name='What do you like about the above neighbourhood?')
+    user=models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    
 
     def create_user_profile(sender, instance, created, **kwargs):
         if created:

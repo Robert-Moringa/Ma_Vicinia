@@ -8,6 +8,7 @@ urlpatterns=[
     url(r'^details/(\d+)', views.details, name='details'),
     url(r'^add/business/', views.addBusiness, name='business'),
     url(r'^create/post/', views.addPost , name='post'),
+    url(r'^myprofile/', views.addProfile , name='profile'),
     url(r'^add/health/', views.addHealth, name='health'),
     url(r'^add/police_post/', views.addPolice, name='police'),
     url(r'^business/(\d+)', views.business_details, name='business_details'),
