@@ -5,6 +5,18 @@
 {% block content %}
 {{block.super}}
 {%for nbd in neighbourhoods%}
+<form class="navigation-search-container text-center" role="search" action="{% url 'search_business' nbd.id%}">
+  <input class="search-field" type="search" placeholder="Search e.g Lewis"  name="business_name">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search" style="font-size: small;"></i> Find
+  </button>
+  <div class="search-container">
+    <div class="search-container-box">
+      <div class="search-results">
+
+      </div>
+    </div>
+  </div>
+</form>
 <h2 class="text-center">Ma(French) means my and Vicinia(Latin) means neighbourhood.</h2>
 <p class="text-center"><span style="font-family: 'Princess Sofia', cursive; color: green;">M<span style="font-family: 'Ephesis', cursive;">a </span><span style="font-family: 'Ephesis', cursive; color: brown;">Vicinia</span></span> applications allows users to be in the loop about everything happening in their neighborhood; from contact information of different handyman to meeting announcements or even alerts.</p>
 <div class="row">

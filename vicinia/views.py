@@ -118,11 +118,10 @@ def addProfile(request):
 @login_required(login_url='login')
 def search_business(request,id):
     title="Find"
-    business=Business.objects.filter(nbd=id)
     
     if 'business_name' in request.GET and request.GET['business_name']:
         search_term = request.GET.get('business_name')
-        found_results = Business.objects.filter(name__icontains=search_term)
+        found_results = Business.objects.filter(nbd=id).filter(name__icontains=search_term)
         message = f"{search_term}"
 
         return render(request, 'search.html',{'title':title,'results': found_results, 'message': message})

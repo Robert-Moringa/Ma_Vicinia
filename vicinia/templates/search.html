@@ -1,0 +1,23 @@
+{%extends 'base.html'%} 
+{% block content %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="text-center">
+            {% if results%}
+            <h3 style="color: white; background-color: rgb(221, 161, 94); padding: 10px; border: 1px solid  rgb(188, 108, 37); border-radius: 10px;"> <i class="fa fa-share-square-o" aria-hidden="true"></i> Found {{results|length }} of your search; {{message}}</h3>
+
+            {%for project in results%}
+            
+            {%endfor%}
+
+            {% else %}
+            <h2> Found 0 post name for the search term {{message}}</h2>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-md-3"></div>
+  
+</div>
+{% endblock %}
