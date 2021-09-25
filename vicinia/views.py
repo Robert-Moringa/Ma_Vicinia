@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Business, NeighbourHood,Health,Police
-from .forms import AddBusiness, AddPolice, AddHealth
+from .models import Business, NeighbourHood,Health,Police, Post
+from .forms import AddBusiness, AddPolice, AddHealth,AddPost
 
 # Create your views here.
 def home(request): 
@@ -13,9 +13,10 @@ def details(request,id):
     neighbourhoods=NeighbourHood.objects.filter(id=id)
     health=Health.objects.filter(nbd=id)
     police=Police.objects.filter(nbd=id)
+    posts=Post.objects.filter(nbd=id)
     title='Know your neighborhood'
     business=Business.objects.filter(nbd=id)
-    return render(request, 'detail.html', {'title':title, 'neighbourhoods': neighbourhoods, 'business': business, 'police': police, 'health':health})
+    return render(request, 'detail.html', {'title':title, 'posts':posts, 'neighbourhoods': neighbourhoods, 'business': business, 'police': police, 'health':health})
 
 @login_required(login_url='login')
 def addBusiness(request):
@@ -76,3 +77,21 @@ def addHealth(request):
         form = AddHealth()
 
     return render(request, 'addHealth.html', {'title':title,'form':form})
+
+@login_required(login_url='login')
+def addPost(request):
+    title='Post your concerns for your neigbourhood to see'
+    current_user = request.user
+    if request.method == 'POST':
+        form = AddPost(request.POST, request.FILES)
+        print(form.is_valid())
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user =current_user
+            post.save()
+        return redirect('home')
+
+    else:
+        form = AddPost()
+
+    return render(request, 'addPost.html', {'title':title,'form':form})

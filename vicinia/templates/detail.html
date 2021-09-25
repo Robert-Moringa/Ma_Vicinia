@@ -118,7 +118,41 @@
           
     </div>
     <div class="col-md-4">
-      <a href="{%url 'business'%}" class="text-center"><button style="background-color: brown; color: white; border: none; border-radius: 5px;">Add Business</button></a>
+      <div class="row" style="margin-top: 7px;">
+        <a href="{%url 'post'%}" class="text-center col-md-6"><button style="background-color: brown; color: white; border: none; border-radius: 5px;"><i class="fa fa-bullhorn" aria-hidden="true"></i> Post in {{nbd.name}}</button></a>
+        <a href="{%url 'business'%}" class="text-center col-md-6"><button style="background-color: brown; color: white; border: none; border-radius: 5px;"><i class="fa fa-money" aria-hidden="true"></i> Add a Business</button></a>
+      </div>
+      <hr style="color: brown;">
+
+      <!-- post -->
+
+      <div class="post">
+        <h3>Posts in {{nbd.name}}</h3>
+        {%for post in posts%}
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="{{post.post_pic.url}}"
+                alt="..."
+                class="img-fluid"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{post.title}}</h5>
+                <p class="card-text">
+                  {{post.description}}
+                </p>
+                <p class="card-text">
+                  <small class="text-muted">Published at {{post.pub_date}}</small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+      </div>
 
       {%for business in business%}
       <div class="card" style="font-size: 80%; margin-top: 10px;">
