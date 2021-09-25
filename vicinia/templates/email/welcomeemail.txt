@@ -1,0 +1,5 @@
+Hello {{name}}
+
+Welcome to the Ma_Vicinia application. You will be in the loop about everything happening in your neighborhood; from contact information of different handyman to meeting announcements or even alerts. 
+
+Your next step is to login and add your profile. We hope you will have a good experience
