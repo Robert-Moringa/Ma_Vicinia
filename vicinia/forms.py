@@ -15,3 +15,8 @@ class AddHealth(forms.ModelForm):
     class Meta:
         model = Health
         exclude = ['user','pub_date']
+
+class AddPost(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ['user','pub_date']

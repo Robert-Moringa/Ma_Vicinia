@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 class NeighbourHood(models.Model):
     class Meta:
         db_table = 'neighbourhood'
-    name= models.TextField()
-    county=models.TextField()
+    name= models.CharField()
+    county=models.CharField()
     population=models.IntegerField()
     description= models.TextField()
     area_pic_one = models.ImageField(upload_to='neighbourhood_pics/', null=True, blank=True)
@@ -51,7 +51,7 @@ class Profile(models.Model):
         db_table = 'profile'
 
     profile_pic = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
-    email= models.TextField()
+    email= models.EmailField()
     why_here= models.TextField(max_length=200, null=True, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     user=models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -88,12 +88,12 @@ class Profile(models.Model):
 class Business(models.Model):
     class Meta:
         db_table = 'business'
-    name= models.TextField()
+    name= models.CharField()
     description= models.TextField()
     business_pic_one = models.ImageField(upload_to='business_pics/', null=True, blank=True)
     business_pic_two = models.ImageField(upload_to='business_pics/', null=True, blank=True)
     Phone_no= models.IntegerField(default=0)
-    email= models.TextField()
+    email= models.EmailField()
     products= models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
     user=models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -131,14 +131,14 @@ class Business(models.Model):
 class Post(models.Model):
     class Meta:
         db_table = 'post'
-    title= models.TextField()
+    title= models.CharField()
     description=models.TextField()
     post_pic= models.ImageField(upload_to='post_pic/', null=True, blank=True)
     contacts=models.IntegerField(default=0)
     email=models.EmailField()
     nbd=models.ForeignKey(NeighbourHood, null=True, blank=True, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True)
-    admin=models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    user=models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
     @classmethod
     def save_post(self):
@@ -165,7 +165,7 @@ class Post(models.Model):
 class Health(models.Model):
     class Meta:
         db_table = 'health'
-    name= models.TextField()
+    name= models.CharField()
     description=models.TextField()
     pic= models.ImageField(upload_to='health_pic/', null=True, blank=True)
     contacts=models.IntegerField(default=0)
@@ -194,7 +194,7 @@ class Health(models.Model):
 class Police(models.Model):
     class Meta:
         db_table = 'police'
-    name= models.TextField()
+    name= models.CharField()
     description=models.TextField()
     pic= models.ImageField(upload_to='police_pic/', null=True, blank=True)
     contacts=models.IntegerField(default=0)
