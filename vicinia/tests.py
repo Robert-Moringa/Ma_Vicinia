@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Profile, NeighbourHood
+from .models import Business, Profile, NeighbourHood
 from django.contrib.auth.models import User
 
 class ProfileTest(TestCase):
@@ -64,5 +64,48 @@ class NeighbourhoodTest(TestCase):
         self.test_neighbourhood.delete()
         self.assertEqual(len(NeighbourHood.objects.all()), 0)
 
-   
+    def test_find_neigborhood(self):
+        self.test_neighbourhood.save()
+        nbd=NeighbourHood.find_neigborhood(NeighbourHood, 1)
+        self.assertTrue(len(nbd)==0)
+
+    
+    def test_update_occupants(self):
+        self.test_neighbourhood.save()
+        nbd=NeighbourHood.find_neigborhood(NeighbourHood, 1)
+        self.assertTrue(len(nbd)==0)
+
+class BusinessTest(TestCase):
+    def setUp(self):
+        self.robert= User.objects.create(username="Robert")
+        self.test_profile= Business.objects.create(user=self.robert,
+                                                email='rober@gmail.com',
+                                                name='robert',
+                                                pub_date='12',                                   
+                                                description='No retreat no surrender',
+                                                business_pic_one ='picture.jpg',
+                                                business_pic_two ='picture.jpg',
+                                                products='robert',
+                                                Phone_no=12,
+                                               
+                                                )
+        self.test_profile.save()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.test_profile, Business))
+
+    #Testing Save method
+    def test_create_business(self):
+        self.test_profile.save()
+        profile = Business.objects.all()
+        self.assertTrue(len(profile)>0)
+
+    # Tear down
+    def tearDown(self):
+        Profile.objects.all().delete()
+
+    # delete methodTesting 
+    def test_delete_business(self):
+        self.test_profile.delete()
+        self.assertEqual(len(Business.objects.all()), 0)
 
