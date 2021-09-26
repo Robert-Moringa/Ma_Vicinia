@@ -12,8 +12,8 @@ from django.core.mail import send_mail
 
 @receiver(user_registered, dispatch_uid="some.unique.string.id.for.allauth.user_signed_up")
 def user_signed_up_(request, user, **kwargs):
-    name = request.POST.get('username')
-    email = request.POST.get('email')
+    name = user.username
+    email = user.email
     
     send_welcome_email(name, email)
     data = {'success': 'Welcome to the Ma_Vicinia application.'}
