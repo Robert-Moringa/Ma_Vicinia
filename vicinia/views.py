@@ -15,9 +15,10 @@ def details(request,id):
     health=Health.objects.filter(nbd=id)
     police=Police.objects.filter(nbd=id)
     posts=Post.objects.filter(nbd=id)
+    profile=Profile.objects.filter(nbd=id)
     title='Know your neighborhood'
     business=Business.objects.filter(nbd=id)
-    return render(request, 'detail.html', {'title':title, 'posts':posts, 'neighbourhoods': neighbourhoods, 'business': business, 'police': police, 'health':health})
+    return render(request, 'detail.html', {'title':title, 'posts':posts, 'profile':profile, 'neighbourhoods': neighbourhoods, 'business': business, 'police': police, 'health':health})
 
 @login_required(login_url='login')
 def addBusiness(request):
