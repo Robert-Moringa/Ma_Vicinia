@@ -1,5 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import User
+from registration.signals import user_registered
+from django.dispatch import receiver
+from .email import send_welcome_email
+from django.http  import HttpResponse, JsonResponse
+from registration.signals import user_activated
+from django.dispatch import receiver
+from django.core.mail import send_mail
+
+
+
+@receiver(user_registered, dispatch_uid="some.unique.string.id.for.allauth.user_signed_up")
+def user_signed_up_(request, user, **kwargs):
+    name = request.POST.get('username')
+    email = request.POST.get('email')
+    
+    send_welcome_email(name, email)
+    data = {'success': 'Welcome to the Ma_Vicinia application.'}
+    return JsonResponse(data)
+    
 
 # Create your models here.
 class NeighbourHood(models.Model):

@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url('accounts/', include('registration.backends.simple.urls')),
     url('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('allauth.urls')),
     url(r'',include('vicinia.urls')),
     
 ]
