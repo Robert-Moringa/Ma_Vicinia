@@ -10,14 +10,14 @@ from django.core.mail import send_mail
 
 
 
-@receiver(user_registered, dispatch_uid="some.unique.string.id.for.allauth.user_signed_up")
-def user_signed_up_(request, user, **kwargs):
-    name = user.username
-    email = user.email
+# @receiver(user_registered, dispatch_uid="some.unique.string.id.for.allauth.user_signed_up")
+# def user_signed_up_(request, user, **kwargs):
+#     name = user.username
+#     email = user.email
     
-    send_welcome_email(name, email)
-    data = {'success': 'Welcome to the Ma_Vicinia application.'}
-    return JsonResponse(data)
+#     send_welcome_email(name, email)
+#     data = {'success': 'Welcome to the Ma_Vicinia application.'}
+#     return JsonResponse(data)
     
 
 # Create your models here.
