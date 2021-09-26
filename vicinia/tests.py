@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Profile
+from .models import Profile, NeighbourHood
 from django.contrib.auth.models import User
 
 class ProfileTest(TestCase):
@@ -30,3 +30,39 @@ class ProfileTest(TestCase):
     def test_delete_profile(self):
         self.test_profile.delete()
         self.assertEqual(len(Profile.objects.all()), 0)
+
+
+class NeighbourhoodTest(TestCase):
+    def setUp(self):
+        self.robert= User.objects.create(username="Robert")
+        self.test_neighbourhood= NeighbourHood.objects.create(admin=self.robert,
+                                                name='Kibagabaga',
+                                                county='Kericho',
+                                                population=100, 
+                                                description='Kericho',                                  
+                                                
+                                                area_pic_one ='picture.jpg',
+                                                area_pic_two ='picture.jpg',
+                                                )
+        self.test_neighbourhood.save()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.test_neighbourhood, NeighbourHood))
+
+    #Testing Save method
+    def test_save_neigborhood_method(self):
+        self.test_neighbourhood.save()
+        nbd = NeighbourHood.objects.all()
+        self.assertTrue(len(nbd)>0)
+
+    # Tear down
+    def tearDown(self):
+        NeighbourHood.objects.all().delete()
+
+    # delete methodTesting 
+    def test_delete_neigborhood(self):
+        self.test_neighbourhood.delete()
+        self.assertEqual(len(NeighbourHood.objects.all()), 0)
+
+   
+
