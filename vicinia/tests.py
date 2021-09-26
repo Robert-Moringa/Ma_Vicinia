@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Business, Profile, NeighbourHood
+from .models import Business, Profile, NeighbourHood,Post, Health,Police
 from django.contrib.auth.models import User
 
 class ProfileTest(TestCase):
@@ -109,3 +109,105 @@ class BusinessTest(TestCase):
         self.test_profile.delete()
         self.assertEqual(len(Business.objects.all()), 0)
 
+class PostTest(TestCase):
+    def setUp(self):
+        self.robert= User.objects.create(username="Robert")
+        self.test_profile= Post.objects.create(user=self.robert,
+                                                email='rober@gmail.com',
+                                                title='robert',
+                                                pub_date='12',                                   
+                                                description='No retreat no surrender',
+                                                post_pic ='picture.jpg',
+                                            
+                                                
+                                                contacts=12,
+                                               
+                                                )
+        self.test_profile.save()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.test_profile, Post))
+
+    #Testing Save method
+    def test_save_post(self):
+        self.test_profile.save()
+        profile = Post.objects.all()
+        self.assertTrue(len(profile)>0)
+
+    # Tear down
+    def tearDown(self):
+        Post.objects.all().delete()
+
+    # delete methodTesting 
+    def test_delete_post(self):
+        self.test_profile.delete()
+        self.assertEqual(len(Post.objects.all()), 0)
+
+class HealthTest(TestCase):
+    def setUp(self):
+        self.robert= User.objects.create(username="Robert")
+        self.test_profile= Health.objects.create(user=self.robert,
+                                                email='rober@gmail.com',
+                                                name='robert',
+                                                pub_date='12',                                   
+                                                description='No retreat no surrender',
+                                                pic ='picture.jpg',
+                                            
+                                                
+                                                contacts=12,
+                                               
+                                                )
+        self.test_profile.save()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.test_profile, Health))
+
+    #Testing Save method
+    def test_save_health(self):
+        self.test_profile.save()
+        profile = Health.objects.all()
+        self.assertTrue(len(profile)>0)
+
+    # Tear down
+    def tearDown(self):
+        Health.objects.all().delete()
+
+    # delete methodTesting 
+    def test_delete_health(self):
+        self.test_profile.delete()
+        self.assertEqual(len(Health.objects.all()), 0)
+
+
+class PoliceTest(TestCase):
+    def setUp(self):
+        self.robert= User.objects.create(username="Robert")
+        self.test_police= Police.objects.create(user=self.robert,
+                                                email='rober@gmail.com',
+                                                name='robert',
+                                                pub_date='12',                                   
+                                                description='No retreat no surrender',
+                                                pic ='picture.jpg',
+                                            
+                                                
+                                                contacts=12,
+                                               
+                                                )
+        self.test_police.save()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.test_police, Police))
+
+    #Testing Save method
+    def test_save_police(self):
+        self.test_police.save()
+        profile = Police.objects.all()
+        self.assertTrue(len(profile)>0)
+
+    # Tear down
+    def tearDown(self):
+        Police.objects.all().delete()
+
+    # delete methodTesting 
+    def test_delete_police(self):
+        self.test_police.delete()
+        self.assertEqual(len(Police.objects.all()), 0)
