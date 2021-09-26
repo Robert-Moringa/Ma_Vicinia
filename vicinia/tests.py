@@ -6,9 +6,11 @@ class ProfileTest(TestCase):
     def setUp(self):
         self.robert= User.objects.create(username="Robert")
         self.test_profile= Profile.objects.create(user=self.robert,
-                                                bio ='No retreat no surrender',
+                                                email='rober@gmail.com',
+                                                pub_date='12',                                   
+                                                why_here ='No retreat no surrender',
                                                 profile_pic ='picture.jpg',
-                                                contact='0701316729' )
+                                                )
         self.test_profile.save()
 
     def test_instance(self):
