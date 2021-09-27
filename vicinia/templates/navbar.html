@@ -52,14 +52,14 @@
                 <a href="/accounts/password/change" class="dropdown-item">Change Password</a>
               </li>
               <li>
-                <a href="{%url 'logout'%}" class="dropdown-item">Logout</a>
+                <a href="accounts/logout" class="dropdown-item">Logout</a>
               </li>
             </ul>
           </li>
         </ul>
         {% else %}
         <li>
-          <a class='btn btn-default' href="{%url 'login'%}">Login</a>
+          <a class='btn btn-default' href="/accounts/login">Login</a>
         </li>
   
         <p></p>
