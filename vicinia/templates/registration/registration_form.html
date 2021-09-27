@@ -1,45 +1,25 @@
 {%extends "base.html"%}
 {% load bootstrap5 %} 
-{%load crispy_forms_tags%}
-
-{%load static%}
+{% load crispy_forms_tags %}
 {% block content %}
-<div class="container">
-  <div class="row">
-    <!-- Empty div -->
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      {% if form.errors %}
-        <p> Some Information Might be Incorrect </p>
-      {% endif %}
-      <div class="panel panel-default">
 
-        <div class="panel-heading" style="padding-top: 3em;">
-          <h3 class="text-center"><span style="font-family: 'Princess Sofia', cursive; color: green;">M<span style="font-family: 'Ephesis', cursive;">a </span><span style="font-family: 'Ephesis', cursive; color: brown;">Vicinia:</span></span></h3>
-          <hr style="color: brown;">
-          <h3 class="text-center">Sign Up</h3>
-        </div>
-        <div class="panel-body">
-
-          <form  action="/accounts/register/" method="post">
-            {% csrf_token %}
-            {{form|crispy}}
-            <div class="form-group">
-              <input type="submit" style="background-color: brown;" class="btn btn-primary btn-sm" value="Sign Up">
-            </div>
-
-            <input type="hidden" name="next" value="{{next}}">
-
-          </form>
-
-        </div>
-
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <h3 class="text-center" style="padding-top: 1em;"><span style="font-family: 'Princess Sofia', cursive; color: green;">M<span style="font-family: 'Ephesis', cursive;">a </span><span style="font-family: 'Ephesis', cursive; color: brown;">Vicinia:</span></span> Sign Up</h3>
+  
+    <form method="POST" style="border: 1px solid brown; margin: 4%; padding:10%; border-radius:1%;">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        {{ form|crispy}}
+      </fieldset>
+      <div class="text-center">
+        <button style="background: brown; padding:2%; font-size: 2rem; color:white;" class="btn btn-outline-info" type="submit"><span class="glyphicon glyphicon-check"></span> &nbsp; Sign up</button>
       </div>
-
-    </div>
-    <!-- empty div -->
-    <div class="col-md-4"></div>
+      <br />
+      <p class="text-center">Already have an account? <a href="{% url 'login' %}" style="cursor:pointer;">Sign in?</a></p>
+    </form>
   </div>
+  <div class="col-md-3"></div>
 </div>
-
 {% endblock %}

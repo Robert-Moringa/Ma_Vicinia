@@ -1,44 +1,24 @@
 {%extends "base.html"%}
 {% load bootstrap5 %}
-{%load crispy_forms_tags%}
+{% load crispy_forms_tags %}
 {% block content %}
-<div class="container">
-  <div class="row">
-    <!-- Empty div -->
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      {% if form.errors %}
-        <p> Password or Username is incorrect </p>
-      {% endif %}
-      <div class="panel panel-default">
 
-        <div class="panel-heading">
-          <h3 class="text-center"><span style="font-family: 'Princess Sofia', cursive; color: green;">M<span style="font-family: 'Ephesis', cursive;">a </span><span style="font-family: 'Ephesis', cursive; color: brown;">Vicinia: <span style="color: black;">Sign In</span></span></span>  </h3>
-        </div>
-        <div class="panel-body">
-
-          <form  action="/accounts/login/" method="post">
-            {% csrf_token %}
-            {{form|crispy}}
-
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Login">
-            </div>
-
-            <input type="hidden" name="next" value="{{next}}">
-
-            <p>Do you have an account? If not, <a href="{%url 'registration_register'%}" class="">Sign Up</a></p>
-
-          </form>
-
-        </div>
-
-      </div>
-
-    </div>
-    <!-- empty div -->
-    <div class="col-md-4"></div>
-  </div>
-</div>
-
-{% endblock %}
+ <div class="row">
+   <div class="col-md-4"></div>
+   <div class="col-md-4 text-center">
+    <h3 class="text-center" style="padding-top: 1em;"><span style="font-family: 'Princess Sofia', cursive; color: green;">M<span style="font-family: 'Ephesis', cursive;">a </span><span style="font-family: 'Ephesis', cursive; color: brown;">Vicinia:</span></span> Sign In</h3>
+    <form method="POST" style="border: 1px solid brown; margin: 4%; padding:10%; border-radius:1%;">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        {{ form|crispy}}
+      </fieldset>
+     <div class="text-center">
+      <button style="background: brown; font-size: 2rem; color: white;" class="btn btn-outline-info" type="submit">Login</button>
+     </div>
+    <br/>
+    <p>Do you have an account? If not:<a href="{% url 'register' %}" style="cursor:pointer;">Sign Up here</a></p>
+    </form>
+   </div>
+   <div class="col-md-4"></div>
+ </div>
+{% endblock%}
